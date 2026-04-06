@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "moda-data-api": {
+      "command": "node",
+      "args": ["/absolute/path/to/apps/moda-cli/dist/index.js"],
+      "env": {
+        "MODA_API_KEY": "moda_sk_your_api_key_here"
+      },
+      "comment": "Uses production API (https://modaflows.com) by default. For local dev, add: \"MODA_BASE_URL\": \"http://localhost:3001\""
+    }
+  }
+}
