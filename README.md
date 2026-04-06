@@ -7,13 +7,13 @@ Query your conversation analytics from the terminal or connect AI assistants (Cl
 ## Install
 
 ```bash
-npm install -g moda-cli
+npm install -g @moda-ai/cli
 ```
 
 Or use without installing:
 
 ```bash
-npx moda-cli overview
+npx -p @moda-ai/cli moda overview
 ```
 
 ## Setup
@@ -61,7 +61,7 @@ moda frustrations | jq '.frustrations[].primary_cause'
 ### Claude Code
 
 ```bash
-claude mcp add moda -- npx moda-cli
+claude mcp add moda -- npx -y @moda-ai/cli
 ```
 
 Or add manually to your MCP config:
@@ -71,7 +71,7 @@ Or add manually to your MCP config:
   "mcpServers": {
     "moda": {
       "command": "npx",
-      "args": ["-y", "moda-cli"],
+      "args": ["-y", "@moda-ai/cli"],
       "env": {
         "MODA_API_KEY": "moda_sk_your_key_here"
       }
@@ -85,7 +85,7 @@ Or add manually to your MCP config:
 ```json
 {
   "command": "npx",
-  "args": ["-y", "moda-cli"],
+  "args": ["-y", "@moda-ai/cli"],
   "env": {
     "MODA_API_KEY": "moda_sk_your_key_here"
   }
