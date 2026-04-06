@@ -1,10 +1,11 @@
 {
-  "name": "moda-cli",
-  "version": "1.0.0",
+  "name": "@moda-ai/cli",
+  "version": "1.0.1",
   "description": "CLI and MCP server for Moda - AI agent analytics and observability",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
+    "cli": "./dist/index.js",
     "moda-mcp": "./dist/index.js",
     "moda": "./dist/cli.js"
   },
