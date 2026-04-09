@@ -85,6 +85,7 @@ function printHelp(): void {
   console.error(`Usage: moda <command> [options]
 
 Commands:
+  init                             Set up Moda in your project
   overview                         Dashboard overview with KPIs
   clusters                         Browse topic cluster hierarchy
   cluster-conversations <node_id>  List conversations in a cluster
@@ -104,7 +105,14 @@ Common flags:
   --offset=N                       Number of results to skip
   --time-range=RANGE               Time range filter (all|1h|3d|7d|24h|30d|90d)
 
+Init flags:
+  --yes                            Accept all defaults (non-interactive)
+  --skip-sdk                       Skip SDK installation
+  --skip-mcp                       Skip MCP server configuration
+
 Examples:
+  moda init
+  moda init --yes
   moda overview
   moda overview --days-back=30
   moda clusters --time-range=7d
@@ -252,6 +260,14 @@ async function main(): Promise<void> {
   if (!command || command === '--help' || command === '-h' || flags.help === 'true') {
     printHelp();
     process.exit(command ? 0 : 1);
+  }
+
+  // init does NOT require MODA_API_KEY — that's what it creates
+  if (command === 'init') {
+    const { runInit } = await import('./init/index.js');
+    const initFlags = flagsToArgs(flags);
+    await runInit(initFlags);
+    return;
   }
 
   validateConfig();
