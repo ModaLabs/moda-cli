@@ -1,6 +1,6 @@
 // src/config.ts
 
-export const VERSION = '1.0.0';
+export const VERSION = '1.0.2';
 
 export const MODA_API_KEY = process.env.MODA_API_KEY;
 export const MODA_BASE_URL =

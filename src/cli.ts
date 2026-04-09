@@ -279,7 +279,10 @@ async function main(): Promise<void> {
 // the path of the entry-point script. Comparing them lets tests import parseArgs /
 // flagsToArgs without triggering the CLI bootstrap.
 import { fileURLToPath } from 'url';
-const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
+import { realpathSync } from 'fs';
+const isMain =
+  process.argv[1] &&
+  fileURLToPath(import.meta.url) === realpathSync(process.argv[1]);
 
 if (isMain) {
   main().catch((error) => {
